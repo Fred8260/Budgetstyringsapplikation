@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BudgetManager {
-    private List<Transaction> transactions
+    private List<Transaction> transactions;
 
     public BudgetManager(){
         transactions = new ArrayList<>();

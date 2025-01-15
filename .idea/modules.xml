@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Budgetstyringsapplikation.iml" filepath="$PROJECT_DIR$/Budgetstyringsapplikation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Budgetstyringsapplikation.iml" filepath="$PROJECT_DIR$/src/Budgetstyringsapplikation.iml" />
     </modules>
   </component>
 </project>
