@@ -12,6 +12,7 @@ public class Main {
             System.out.println("1. Tilføj transaktion");
             System.out.println("2. Generer rapport");
             System.out.println("3. Udskriv til CSV");
+            System.out.println("4. Udskriv til XML");
             System.out.println("0. Afslut");
             System.out.print("Vælg en mulighed: ");
             int choice = scanner.nextInt();
@@ -28,13 +29,16 @@ public class Main {
                 boolean isIncome = scanner.nextBoolean();
                 manager.addTransaction(new Transaction(amount, category, LocalDate.now(), isIncome));
             } else if (choice == 2) {
-                manager.generateReport();
-            } else if (choice == 3){
-                System.out.println("Indtast filnavn for CSV (f.eks. data.csv): ");
+                manager.generateReport();  // Genererer rapport med balancen
+            } else if (choice == 3) {
+                System.out.print("Indtast filnavn for CSV (f.eks. data.csv): ");
                 String filename = scanner.nextLine();
                 manager.exportToCSV(filename);
-            }
-            else if (choice == 0) {
+            } else if (choice == 4) {
+                System.out.print("Indtast filnavn for XML (f.eks. data.xml): ");
+                String filename = scanner.nextLine();
+                manager.exportToXML(filename);
+            } else if (choice == 0) {
                 System.out.println("Programmet afsluttes.");
                 break;
             } else {
