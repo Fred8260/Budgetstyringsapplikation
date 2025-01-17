@@ -1,16 +1,41 @@
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         // Opretter en instans af BudgetManager
         BudgetManager manager = new BudgetManager();
+        Scanner scanner = new Scanner(System.in);
 
-        // Tilføj nogle transaktioner
-        manager.addTransaction(new Transaction(500, "Løn", LocalDate.now(), true)); // Indtægt
-        manager.addTransaction(new Transaction(100, "Mad", LocalDate.now(), false)); // Udgift
-        manager.addTransaction(new Transaction(50, "Transport", LocalDate.now(), false)); // Udgift
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Tilføj transaktion");
+            System.out.println("2. Generer rapport");
+            System.out.println("0. Afslut");
+            System.out.print("Vælg en mulighed: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();  // Ryd scanner-buffer
 
-        // Generer rapport
-        manager.generateReport();
+            if (choice == 1) {
+                System.out.print("Indtast beløb: ");
+                double amount = scanner.nextDouble();
+                scanner.nextLine();
+                System.out.print("Indtast kategori: ");
+                String categoryInput = scanner.nextLine();
+                Category category = new Category(categoryInput);  // Opret Category-objekt
+                System.out.print("Er det indtægt? (true/false): ");
+                boolean isIncome = scanner.nextBoolean();
+                manager.addTransaction(new Transaction(amount, category, LocalDate.now(), isIncome));
+            } else if (choice == 2) {
+                manager.generateReport();
+            } else if (choice == 0) {
+                System.out.println("Programmet afsluttes.");
+                break;
+            } else {
+                System.out.println("Ugyldigt valg. Prøv igen.");
+            }
+        }
+
+        scanner.close();
     }
 }
