@@ -1,92 +1,63 @@
-# Budget Manager
+# Budget Management Application
 
-Dette projekt er en simpel budgetstyringsapplikation skrevet i Java. Applikationen gør det muligt for brugere at registrere transaktioner, generere rapporter, samt eksportere data til CSV- og XML-filer. Formålet er at give en overskuelig måde at holde styr på økonomi ved at kategorisere og balancere indtægter og udgifter.
+En simpel budgetstyringsapplikation, der giver brugeren mulighed for at tilføje transaktioner, generere rapporter, og eksportere data til både CSV- og XML-filer.
 
 ## Funktioner
-- Tilføj transaktioner med beløb, kategori, dato og type (indtægt/udgift).
-- Generer rapporter, der viser samlede indtægter, udgifter og balance.
-- Eksporter transaktioner og balance til CSV- og XML-filer.
+- Tilføj indtægter og udgifter.
+- Generer rapporter med total indtægt, udgifter og balance.
+- Eksporter data til CSV- og XML-formater.
 
-## Systemkrav
-- Java 11 eller nyere.
+## Krav
+- Java Development Kit (JDK) 8 eller nyere.
 
 ## Installation
-1. Klon dette repository eller download ZIP-filen.
-2. Naviger til projektets rodmappe i din terminal eller kommandoprompt.
-3. Kompiler projektet med:
+1. Klon repository:
+   ```bash
+   git clone <repository-url>
    ```
-   javac *.java
-   ```
-4. Kør applikationen med:
-   ```
-   java Main
-   ```
+2. Naviger til projektmappen.
+3. Åbn projektet i din Java-IDE, eller brug kommandolinjen til at kompilere og køre det.
 
-## Brugerflade
-Applikationen bruger en konsol-baseret menu med følgende muligheder:
-1. Tilføj transaktion: Brugeren bliver bedt om at indtaste beløb, kategori og om det er en indtægt eller udgift.
-2. Generer rapport: Viser de samlede indtægter, udgifter og den aktuelle balance.
-3. Udskriv til CSV: Eksporterer transaktioner og balance til en angivet CSV-fil.
-4. Udskriv til XML: Eksporterer transaktioner og balance til en angivet XML-fil.
-0. Afslut: Lukker programmet.
+## Brug
 
-## Eksempel
-Ved valg af "Tilføj transaktion" skal brugeren indtaste følgende:
-- Beløb: 500.0
-- Kategori: Mad
-- Er det indtægt? (true/false): false
+1. Kør programmet.
+2. Følg menuindstillingerne for at:
+   - Tilføje nye transaktioner (indtast beløb, kategori og angiv om det er en indtægt).
+   - Generere en rapport, der viser total indtægt, udgifter og balance.
+   - Eksportere transaktioner til en CSV- eller XML-fil ved at angive et filnavn.
 
-Efter at have tilføjet transaktioner kan man generere en rapport eller eksportere data.
-
-### Filformater
-- **CSV-fil**: Indholdet organiseres med kolonnerne: `Amount, Category, Date, Income` samt en balance nederst.
-- **XML-fil**: Indholdet præsenteres med en `<Budget>`-rod, hvor hver transaktion er et `<Transaction>`-element, og `<Balance>` viser den aktuelle balance.
-
-## Eksempel på CSV-output
-```
-Amount,Category,Date,Income
-500.0,Mad,2025-01-20,false
-2000.0,Løn,2025-01-15,true
-
-Balance: 1500.0
+## Eksempel på menu
+```plaintext
+Menu:
+1. Tilføj transaktion
+2. Generer rapport
+3. Udskriv til CSV
+4. Udskriv til XML
+0. Afslut
 ```
 
-## Eksempel på XML-output
+## Filformater
+- **CSV**: Eksporterer transaktionsdata i kommasepareret format med kolonnerne `Amount`, `Category`, `Date`, `Income`, og `Balance`.
+- **XML**: Eksporterer transaktionsdata i en XML-struktur med transaktionselementer, der inkluderer `Amount`, `Category`, `Date`, `Income`, og `Balance`.
+
+## Eksempler
+### CSV-eksempel
+```
+Amount,Category,Date,Income,Balance
+500,Løn,2025-01-15,true,400
+100,Mad,2025-01-16,false,300
+```
+
+### XML-eksempel
 ```xml
-<Budget>
-  <Transaction>
-    <Amount>500.0</Amount>
-    <Category>Mad</Category>
-    <Date>2025-01-20</Date>
-    <Income>false</Income>
-  </Transaction>
-  <Transaction>
-    <Amount>2000.0</Amount>
-    <Category>Løn</Category>
-    <Date>2025-01-15</Date>
-    <Income>true</Income>
-  </Transaction>
-  <Balance>1500.0</Balance>
-</Budget>
+<Transactions>
+   <Transaction>
+      <Amount>500.0</Amount>
+      <Category>Løn</Category>
+      <Date>2025-01-15</Date>
+      <Income>true</Income>
+      <Balance>400.0</Balance>
+   </Transaction>
+</Transactions>
 ```
-
-## Kodeoversigt
-Projektet består af følgende klasser:
-
-- `Main`: Hovedklassen, der indeholder menuen og styrer brugerinput.
-- `BudgetManager`: Håndterer transaktioner, rapportgenerering og eksport til filer.
-- `Transaction`: Repræsenterer en individuel transaktion.
-- `Category`: Kategoriserer transaktioner baseret på brugerinput.
-
-## Udvidelsesmuligheder
-- Implementering af filtreringsmuligheder for transaktioner baseret på dato eller kategori.
-- Grafisk brugerflade (GUI) for bedre brugeroplevelse.
-- Mulighed for at importere data fra CSV- eller XML-filer.
-
-## Fejlhåndtering
-- Hvis der opstår fejl ved eksport, vil fejlen vises i konsollen.
-
-
-## Licens
-Dette projekt er open source og under en passende licens (specificer gerne licensen her, fx MIT License).
 
