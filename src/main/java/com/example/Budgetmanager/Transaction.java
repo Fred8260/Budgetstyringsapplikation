@@ -1,3 +1,5 @@
+package com.example.Budgetmanager;
+
 import java.time.LocalDate;
 
 /**
@@ -6,7 +8,7 @@ import java.time.LocalDate;
  */
 public class Transaction {
     private double amount;
-    private Category category;  // Retter kategorien til at bruge Category-objektet
+    private Category category;
     private LocalDate date;
     private boolean isIncome;
 
@@ -32,6 +34,23 @@ public class Transaction {
 
     public boolean isIncome() {
         return isIncome;
+    }
+
+    // Setters for updating the transaction fields
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setIncome(boolean isIncome) {
+        this.isIncome = isIncome;
     }
 
     /**
