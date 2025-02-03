@@ -4,20 +4,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/transactions")
+@CrossOrigin(origins = "*") // Tillader anmodninger fra alle domæner
 public class TransactionController {
 
     private final BudgetManager budgetManager;
 
-
-    public TransactionController(BudgetManager budgetManager){
+    public TransactionController(BudgetManager budgetManager) {
         this.budgetManager = budgetManager;
     }
+
     // Hent alle transaktioner
     @GetMapping
-    public List<Transaction> getAllTransaction(){
+    public List<Transaction> getAllTransactions() {
         return budgetManager.getTransactions();
     }
 
