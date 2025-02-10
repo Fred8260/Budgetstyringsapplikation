@@ -1,5 +1,7 @@
 package com.example.Budgetmanager;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +25,12 @@ public class TransactionController {
 
     // Tilføj en ny transaktion
     @PostMapping
-    public void addTransaction(@RequestBody Transaction transaction) {
+    public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction) {
+        // Tilføj transaktionen til BudgetManager
         budgetManager.addTransaction(transaction);
+
+        // Returner den oprettede transaktion som svar
+        return ResponseEntity.status(HttpStatus.CREATED).body(transaction);
     }
 
     // Opdater en eksisterende transaktion

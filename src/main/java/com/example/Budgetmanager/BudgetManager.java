@@ -1,12 +1,15 @@
 package com.example.Budgetmanager;
 
+import org.springframework.stereotype.Service;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
-
-public class BudgetManager {
+@Service
+public class
+BudgetManager {
     private List<Transaction> transactions;
 
     public BudgetManager() {
